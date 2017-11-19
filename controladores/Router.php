@@ -7,7 +7,9 @@ class Router {
         $session_options = array(
             'use_only_cookies' => 1,
             'auto_start' => 1,
-            'read_and_close' => true
+            'read_and_close' => true,
+            'lazy_write' => false,
+            'cache_limiter' => 'private'
         );
 
         if ( !isset($_SESSION) )  session_start($session_options);
@@ -29,3 +31,4 @@ class Router {
     //     unset($this);
     // }
 }
+?>
