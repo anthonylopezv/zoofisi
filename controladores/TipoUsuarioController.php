@@ -1,15 +1,15 @@
 <?php
 
-class TipoTrabajadorController {
+class TipoUsuarioController {
     private $model;
 
     public function __construct() {
-        $this->model = new TipoTrabajadorModel();
+        $this->model = new TipoUsuarioModel();
         
     }
 
-    public function set($TipoTrabajador_data = array() ){
-        return $this->model->set($TipoTrabajador_data);
+    public function set($TipoUsuario_data = array() ){
+        return $this->model->set($TipoUsuario_data);
     }
 
     public function get( $id = '' ){

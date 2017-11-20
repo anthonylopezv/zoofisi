@@ -9,14 +9,14 @@ class TipoTrabajadorModel extends model {
             $$key = $value;
         }
 
-        $this->query = "REPLACE INTO tipotrabajador (id,nombre) VALUES ($id,'$nombre')";
+        $this->query = "REPLACE INTO tipousuario (id,nombre) VALUES ($id,'$nombre')";
         $this->set_query();
     }
 
     public function get( $id = '' ){
         $this->query = ($id != '')
-                ?"SELECT * FROM tipotrabajador WHERE id = $id"
-                :"SELECT * FROM tipotrabajador";
+                ?"SELECT * FROM tipousuario WHERE id = $id"
+                :"SELECT * FROM tipousuario";
 
         $this->get_query();
         
@@ -32,7 +32,7 @@ class TipoTrabajadorModel extends model {
     }
     
     public function del($id = '' ){
-        $this->query = "DELETE FROM tipotrabajador WHERE id=$id";
+        $this->query = "DELETE FROM tipousuario WHERE id=$id";
         $this->set_query();
     }
 

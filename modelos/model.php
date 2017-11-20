@@ -3,7 +3,7 @@ abstract class Model {
     private static $db_host = 'localhost';
     private static $db_user = 'root';
     private static $db_pass = 'root';
-    private static $db_name = 'zoo-fisi';
+    private static $db_name = 'zoofisi';
     private static $db_charset = 'utf8mb4';
     private $conn;
     protected $query;

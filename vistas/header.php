@@ -34,4 +34,4 @@
       </nav>
   </header>
 
-  <main class="container  center  main">
+  <main  class="container  center  main">

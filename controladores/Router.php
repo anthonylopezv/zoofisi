@@ -18,9 +18,15 @@ class Router {
             // Aqui va toda la programacion de la wepapp
         } 
         else {
-            // Mostrar un formulario de autenticacion
-            $login_form = new ViewController();
-            $login_form -> load_view('login');        
+            if (!isset($_POST['user']) && !isset($_POST['pass'])) {
+                // Mostrar un formulario de autenticacion
+                $login_form = new ViewController();
+                $login_form -> load_view('login');     
+            }
+            else {
+                $user_session = new SessionController();
+            }
+               
         }
         
     }
