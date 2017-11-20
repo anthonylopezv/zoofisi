@@ -1,5 +1,5 @@
 <?php
-require_once('./controladores/Autoload.php');
+require('./controladores/Autoload.php');
 $autoload = new Autoload();
 
 $route = isset($_GET['r']) ? $_GET['r'] : 'home';  
