@@ -4,10 +4,10 @@ class Router {
 
     public function __construct($route) {
 
-        $session_options = array(
-            'use_only_cookies' => 1,
-            // 'auto_start' => 1,
-            'read_and_close' => true
+        $session_options = array (
+            // 'use_only_cookies' => 1,
+            // // 'auto_start' => 1,
+            // 'read_and_close' => true
         );
 
         if ( !isset($_SESSION) )  session_start($session_options);
@@ -16,7 +16,8 @@ class Router {
         
         if($_SESSION['ok']) {
             // Aqui va toda la programacion de la aplicacion web
-
+            $controller = new ViewController();
+            $controller -> load_view('home');
         } 
         else {
             if (!isset($_POST['user']) && !isset($_POST['pass'])) {
@@ -35,18 +36,18 @@ class Router {
                     header('Location: ./?error=El usuario ' . $_POST['user'] . ' y el password no coinciden');
                 }else {
                     //echo 'El usuario y el password son correctos';
-                    var_dump($session);
-                    // $_SESSION['ok'] = true;
+                    // var_dump($session);
+                    $_SESSION['ok'] = true;
 
-                    // foreach ($session as $row) {
-                    //     $_SESSION['id'] = $row['id'];
-                    //     $_SESSION['email'] = $row['email'];
-                    //     $_SESSION['password'] = $row['password'];
-                    //     $_SESSION['idTrabajador'] = $row['idTrabajador'];
-                    //     $_SESSION['idTipoUsuario'] = $row['idTipoUsuario'];
-                    // }
+                    foreach ($session as $row) {
+                        $_SESSION['id'] = $row['id'];
+                        $_SESSION['email'] = $row['email'];
+                        $_SESSION['password'] = $row['password'];
+                        $_SESSION['idTrabajador'] = $row['idTrabajador'];
+                        $_SESSION['idTipoUsuario'] = $row['idTipoUsuario'];
+                    }
 
-                    // header ('Location: ./');
+                    header ('Location: ./');
                 }
             }
                

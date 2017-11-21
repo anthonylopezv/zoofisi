@@ -6,5 +6,5 @@ $template = '
     
 ';
 
-printf($template, $_SESSION['idTrabajador']);
+printf($template, $_SESSION['email']);
 
