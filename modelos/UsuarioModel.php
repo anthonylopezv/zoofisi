@@ -9,22 +9,22 @@ class UsuarioModel extends model {
             $$key = $value;
         }
 
-        $this->query = "REPLACE INTO usuario 
-                        SET id = $id, email = '$email', password = MD5('$password'), idTrabajador = $idTrabajador, idTipoUsuario = $idTipoUsuario";
+        $this->query = "REPLACE INTO usuario SET id = $id, email = '$email', password = MD5('$password'), idTrabajador = $idTrabajador, idTipoUsuario = $idTipoUsuario";
+        // $this->query = "REPLACE INTO usuario (id,email,password,idTrabajador,idTipoUsuario) VALUES ($id,'$email',MD5('$password'),$idTrabajador,$idTipoUsuario)";
         $this->set_query();
     }
 
     public function get( $id = '' ){
         $this->query = ($id != '')
-                ?"SELECT u.id, u.email, u.password, tra.nombres, tu.nombre
-                  from usuario AS u
-                  JOIN trabajador AS tra ON u.idTrabajador=tra.id
-                  JOIN tipousuario AS tu ON u.idTipoUsuario=tu.id 
-                  WHERE u.id = $id"
-                :"SELECT u.id, u.email, u.password, tra.nombres, tu.nombre
-                  from usuario AS u
-                  JOIN trabajador AS tra ON u.idTrabajador=tra.id
-                  JOIN tipousuario AS tu ON u.idTipoUsuario=tu.id";
+                ?"SELECT u.id, u.email, u.password, tr.nombres, tu.nombre
+                  FROM usuario u
+                  JOIN trabajador tr ON u.idTrabajador=tr.id
+                  JOIN tipousuario tu ON u.idTipoUsuario=tu.id 
+                  WHERE usuario.id = $id"
+                :"SELECT u.id, u.email, u.password, tr.nombres, tu.nombre
+                  FROM usuario u
+                  JOIN trabajador tr ON u.idTrabajador=tr.id
+                  JOIN tipousuario tu ON u.idTipoUsuario=tu.id ";
 
         $this->get_query();
         
@@ -61,4 +61,3 @@ class UsuarioModel extends model {
     //      unset($this);
     // }
 }
-?>
