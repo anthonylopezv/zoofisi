@@ -3,20 +3,21 @@ require_once('model.php');
 
 class UsuarioModel extends model {
 
-    public function set($TipoTrabajador_data = array() ){
-        foreach ($TipoTrabajador_data as $key => $value){
+    public function set($usuario_data = array() ){
+        foreach ($usuario_data as $key => $value){
             // Variables variable
             $$key = $value;
         }
 
-        $this->query = "REPLACE INTO tipotrabajador (id,nombre) VALUES ($id,'$nombre')";
+        $this->query = "REPLACE INTO usuario (id, email, password, idTrabajador, idTipoUsuario)
+                        VALUES ($id, '$email', MD5('$password'), '$idTrabajador, '$idTipoUsuario')";
         $this->set_query();
     }
 
     public function get( $id = '' ){
         $this->query = ($id != '')
-                ?"SELECT * FROM tipotrabajador WHERE id = $id"
-                :"SELECT * FROM tipotrabajador";
+                ?"SELECT * FROM usuario WHERE id = $id"
+                :"SELECT * FROM usuario";
 
         $this->get_query();
         
@@ -32,8 +33,21 @@ class UsuarioModel extends model {
     }
     
     public function del($id = '' ){
-        $this->query = "DELETE FROM tipotrabajador WHERE id=$id";
+        $this->query = "DELETE FROM usuario WHERE id=$id";
         $this->set_query();
+    }
+
+    public function validate_usuario($user, $pass){
+        $this->query = "SELECT * FROM usuario WHERE email = '$user' AND password = MD5('$pass')";
+        $this->get_query();
+
+        $data = array();
+        
+        foreach ($this->rows as $key => $value){    
+            array_push($data, $value);
+        }
+        
+        return $data;
     }
 
     // public function __destruct() {

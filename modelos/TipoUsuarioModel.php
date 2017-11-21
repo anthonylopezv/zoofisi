@@ -1,10 +1,10 @@
 <?php
 require_once('model.php');
 
-class TipoTrabajadorModel extends model {
+class TipoUsuarioModel extends model {
 
-    public function set($TipoTrabajador_data = array() ){
-        foreach ($TipoTrabajador_data as $key => $value){
+    public function set($TipoUsuario_data = array() ){
+        foreach ($TipoUsuario_data as $key => $value){
             // Variables variable
             $$key = $value;
         }

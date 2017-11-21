@@ -25,6 +25,13 @@ class Router {
             }
             else {
                 $user_session = new SessionController();
+                $session = $user_session->login($_POST['user'], $_POST['pass']);
+
+                if (empty($session)) {
+                    echo 'El usuario y el password son incorrectos';
+                }else {
+                    echo 'El usuario y el password son correctos';
+                }
             }
                
         }
