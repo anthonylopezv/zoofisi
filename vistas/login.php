@@ -1,5 +1,5 @@
 
-    <form class="item" method="POST" >
+    <form class="item " method="POST" >
       <p class="item">Inicia Sesión en zooFISI</p>
       <div class="p_25">
         <input type="text" name="user" placeholder="Email" required>
@@ -11,4 +11,10 @@
         <input type="submit" class="button" value="Entrar">
       </div>
     </form>
+
+    <?php if( isset($_GET['error']) ){ ?>
+      <div class="container">
+        <p class="item error"> <?php print $_GET['error']; ?> </p>
+      </div>
+    <?php } ?>
   

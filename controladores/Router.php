@@ -15,7 +15,8 @@ class Router {
         if( !isset($_SESSION['ok']) )  $_SESSION['ok'] = false;
         
         if($_SESSION['ok']) {
-            // Aqui va toda la programacion de la wepapp
+            // Aqui va toda la programacion de la aplicacion web
+
         } 
         else {
             if (!isset($_POST['user']) && !isset($_POST['pass'])) {
@@ -28,9 +29,24 @@ class Router {
                 $session = $user_session->login($_POST['user'], $_POST['pass']);
 
                 if (empty($session)) {
-                    echo 'El usuario y el password son incorrectos';
+                    //echo 'El usuario y el password son incorrectos';
+                    $login_form = new ViewController();
+                    $login_form -> load_view('login');
+                    header('Location: ./?error=El usuario ' . $_POST['user'] . ' y el password no coinciden');
                 }else {
-                    echo 'El usuario y el password son correctos';
+                    //echo 'El usuario y el password son correctos';
+                    var_dump($session);
+                    // $_SESSION['ok'] = true;
+
+                    // foreach ($session as $row) {
+                    //     $_SESSION['id'] = $row['id'];
+                    //     $_SESSION['email'] = $row['email'];
+                    //     $_SESSION['password'] = $row['password'];
+                    //     $_SESSION['idTrabajador'] = $row['idTrabajador'];
+                    //     $_SESSION['idTipoUsuario'] = $row['idTipoUsuario'];
+                    // }
+
+                    // header ('Location: ./');
                 }
             }
                
