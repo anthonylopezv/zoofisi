@@ -26,6 +26,7 @@
           <li class="nobullet  item  inline"><a href="./">Inicio</a></li>
           <li class="nobullet  item  inline"><a href="animales">Animales</a></li>
           <li class="nobullet  item  inline"><a href="trabajadores">Trabajadores</a></li>
+          <li class="nobullet  item  inline"><a href="tipotrabajador">Tipo de Trabajador</a></li>
           <li class="nobullet  item  inline"><a href="itinerario">Itinerario</a></li>
           <li class="nobullet  item  inline"><a href="habitad">Hábitad</a></li>
           <li class="nobullet  item  inline"><a href="zona">Zona</a></li>

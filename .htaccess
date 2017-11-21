@@ -1,9 +1,9 @@
-#Options +FollowSymlinks
-#RewriteEngine Op
+Options +FollowSymlinks
+RewriteEngine On
 
-#RewriteBase /zoo-fisi
+RewriteBase  /proyectoBDII/zoo-fisi
 
-#RewriteCond %{SCRIPT_FILENAME} !-d
-#RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
 
-#Rewrite ^(.*)$ index.php?r=$1 [L]
+RewriteRule ^(.*)$ index.php?r=$1 [L]

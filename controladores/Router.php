@@ -16,8 +16,49 @@ class Router {
         
         if($_SESSION['ok']) {
             // Aqui va toda la programacion de la aplicacion web
+            $this->route = isset($_GET['r']) ? $_GET['r'] : 'home';
+
             $controller = new ViewController();
-            $controller -> load_view('home');
+
+            switch ($this->route) { 
+                case 'home':
+                    $controller -> load_view('home');
+                    break;
+                
+                case 'animales':
+                    $controller -> load_view('animales');
+                    break;
+                
+                case 'trabajadores':
+                    $controller -> load_view('trabajadores');
+                    break;
+
+                case 'tipotrabajador':
+                    $controller -> load_view('tipotrabajador');
+                    break;    
+                
+                case 'itinerario':
+                    $controller -> load_view('itinerario');
+                    break; 
+                
+                case 'habitad':
+                    $controller -> load_view('habitad');
+                    break;
+                
+                case 'zona':
+                    $controller -> load_view('zona');
+                    break;
+                
+                case 'salir':
+                    $user_session = new SessionController();
+                    $user_session -> logout();
+                    break;    
+                    
+                default:
+                    $controller -> load_view('error404');
+                    break;
+            }
+
         } 
         else {
             if (!isset($_POST['user']) && !isset($_POST['pass'])) {

@@ -11,7 +11,9 @@ class SessionController {
     }
 
     public function logout(){
-
+        session_start();
+        session_destroy();
+        header('Location: ./');
     }
 
 }
