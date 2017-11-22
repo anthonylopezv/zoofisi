@@ -1,4 +1,4 @@
-</main>
+  </main>
 
   <footer class="container  center  footer">
      <p class="item" >UNMSM - zooFISI &copy; 2017</p> 
@@ -14,5 +14,4 @@
     crossorigin="anonymous"></script>
   <script src="./public/js/zoo_fisi.js"></script>
 </body>
-
 </html>
