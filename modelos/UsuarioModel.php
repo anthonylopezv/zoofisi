@@ -9,7 +9,9 @@ class UsuarioModel extends model {
             $$key = $value;
         }
 
-        $this->query = "REPLACE INTO usuario SET id = $id, email = '$email', password = MD5('$password'), idTrabajador = $idTrabajador, idTipoUsuario = $idTipoUsuario";
+        $this->query = "REPLACE INTO usuario 
+                        SET id = $id, email = '$email', password = MD5('$password'), 
+                        idTrabajador = $idTrabajador, idTipoUsuario = $idTipoUsuario";
         // $this->query = "REPLACE INTO usuario (id,email,password,idTrabajador,idTipoUsuario) VALUES ($id,'$email',MD5('$password'),$idTrabajador,$idTipoUsuario)";
         $this->set_query();
     }

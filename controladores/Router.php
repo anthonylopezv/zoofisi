@@ -80,12 +80,15 @@ class Router {
                     // var_dump($session);
                     $_SESSION['ok'] = true;
 
-                    foreach ($session as $row) {
+                    $id_controller = new UsuarioController();
+                    $id = $id_controller->get();
+
+                    foreach ($id as $row) {
                         $_SESSION['id'] = $row['id'];
                         $_SESSION['email'] = $row['email'];
                         $_SESSION['password'] = $row['password'];
-                        $_SESSION['idTrabajador'] = $row['idTrabajador'];
-                        $_SESSION['idTipoUsuario'] = $row['idTipoUsuario'];
+                        $_SESSION['idTrabajador'] = $row['nombres'];
+                        $_SESSION['idTipoUsuario'] = $row['nombre'];
                     }
 
                     header ('Location: ./');
