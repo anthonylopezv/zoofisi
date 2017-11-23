@@ -34,7 +34,10 @@ class Router {
                     break;
 
                 case 'tipotrabajador':
-                    $controller -> load_view('tipotrabajador');
+                    if( !isset( $_POST['r'] )) $controller -> load_view('tipotrabajador');
+                    elseif ($_POST['r'] == 'tipoTrabajador-add') $controller -> load_view('tipoTrabajador-add');
+                    elseif ($_POST['r'] == 'tipoTrabajador-edit') $controller -> load_view('tipoTrabajador-edit');
+                    elseif ($_POST['r'] == 'tipoTrabajador-delete') $controller -> load_view('tipoTrabajador-delete');
                     break;    
                 
                 case 'itinerario':

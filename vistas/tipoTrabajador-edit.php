@@ -1,0 +1,1 @@
+<h2>Editando Tipo de Trabajador</h2>

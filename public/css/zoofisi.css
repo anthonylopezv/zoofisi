@@ -46,13 +46,14 @@ table {
 table td, table th {padding: .25rem;}
 
 table tr:first-child {
-    background-color: black;
-    color: black;
+    background-color: #7986CB;
+    color: white;
+    font-weight: bold;
 }
 
-table tr:nth-child(even) {background-color: rebeccapurple;}
+table tr:nth-child(even) {background-color: white; color: black;}
 
-table tr:nth-child(odd):not(:first-child) {background-color: yellow;}
+table tr:nth-child(odd):not(:first-child) {background-color: #EEEEEE;color: black;}
 
 .menu a {
     font-size: 1.5rem;

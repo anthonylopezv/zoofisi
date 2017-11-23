@@ -1,0 +1,1 @@
+<h2>Agregando un Tipo de Trabajador</h2>

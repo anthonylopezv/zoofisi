@@ -1,0 +1,1 @@
+<h2>Eliminando Tipo de Trabajador</h2>
