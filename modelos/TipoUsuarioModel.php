@@ -8,8 +8,7 @@ class TipoUsuarioModel extends model {
             // Variables variable
             $$key = $value;
         }
-
-        $this->query = "REPLACE INTO tipousuario (id,nombre) VALUES ($id,'$nombre')";
+        $this->query = "REPLACE INTO tipousuario SET id = $id, nombre = '$nombre'";
         $this->set_query();
     }
 
@@ -40,4 +39,3 @@ class TipoUsuarioModel extends model {
     //      unset($this);
     // }
 }
-?>
