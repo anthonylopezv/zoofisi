@@ -4,13 +4,13 @@ class Router {
 
     public function __construct($route) {
 
-        $session_options = array (
-            // 'use_only_cookies' => 1,
-            // // 'auto_start' => 1,
-            // 'read_and_close' => true
-        );
+        // $session_options = array (
+        //     // 'use_only_cookies' => 1,
+        //     // // 'auto_start' => 1,
+        //     // 'read_and_close' => true
+        // );
 
-        if ( !isset($_SESSION) )  session_start($session_options);
+        if ( !isset($_SESSION) )  session_start();
         
         if( !isset($_SESSION['ok']) )  $_SESSION['ok'] = false;
         
@@ -54,7 +54,7 @@ class Router {
                 
                 case 'salir':
                     $user_session = new SessionController();
-                    $user_session -> logout();
+                    $user_session->logout();
                     break;    
                     
                 default:
@@ -80,20 +80,16 @@ class Router {
                     header('Location: ./?error=El usuario ' . $_POST['user'] . ' y el password no coinciden');
                 }else {
                     //echo 'El usuario y el password son correctos';
-                    // var_dump($session);
+                    //var_dump($session);
                     $_SESSION['ok'] = true;
 
-                    $id_controller = new UsuarioController();
-                    $id = $id_controller->get();
-
-                    foreach ($id as $row) {
-                        $_SESSION['id'] = $row['id'];
+                    foreach ( $session as $row) {
+                        $_SESSION['user'] = $row['user'];
                         $_SESSION['email'] = $row['email'];
                         $_SESSION['password'] = $row['password'];
                         $_SESSION['idTrabajador'] = $row['nombres'];
                         $_SESSION['idTipoUsuario'] = $row['nombre'];
                     }
-
                     header ('Location: ./');
                 }
             }

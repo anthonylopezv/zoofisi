@@ -28,7 +28,7 @@ if (empty($tipoTrabajador)) {
                     </th>
                 </tr>';
         
-        for ($n=0; $n < count($tipoTrabajador) ; $n++) { 
+        for ($n=0; $n < count($tipoTrabajador); $n++) { 
             $template_tipoTrabajador .= '
                 <tr>
                     <td>'. $tipoTrabajador[$n]['id'] .'</td>

@@ -46,4 +46,3 @@ abstract class Model {
         return array_pop($this->rows);
     }
 }
-?>

@@ -10,20 +10,20 @@ class UsuarioModel extends model {
         }
 
         $this->query = "REPLACE INTO usuario 
-                        SET id = $id, email = '$email', password = MD5('$password'), 
+                        SET user = '$user', email = '$email', password = MD5('$password'), 
                         idTrabajador = $idTrabajador, idTipoUsuario = $idTipoUsuario";
         // $this->query = "REPLACE INTO usuario (id,email,password,idTrabajador,idTipoUsuario) VALUES ($id,'$email',MD5('$password'),$idTrabajador,$idTipoUsuario)";
         $this->set_query();
     }
 
-    public function get( $id = '' ){
-        $this->query = ($id != '')
-                ?"SELECT u.id, u.email, u.password, tr.nombres, tu.nombre
+    public function get( $user = '' ){
+        $this->query = ($user != '')
+                ?"SELECT u.user, u.email, u.password, tr.nombres, tu.nombre
                   FROM usuario u
                   JOIN trabajador tr ON u.idTrabajador=tr.id
                   JOIN tipousuario tu ON u.idTipoUsuario=tu.id 
-                  WHERE usuario.id = $id"
-                :"SELECT u.id, u.email, u.password, tr.nombres, tu.nombre
+                  WHERE u.user = $user"
+                :"SELECT u.user, u.email, u.password, tr.nombres, tu.nombre
                   FROM usuario u
                   JOIN trabajador tr ON u.idTrabajador=tr.id
                   JOIN tipousuario tu ON u.idTipoUsuario=tu.id ";
@@ -41,13 +41,17 @@ class UsuarioModel extends model {
         return $data;
     }
     
-    public function del($id = '' ){
-        $this->query = "DELETE FROM usuario WHERE id=$id";
+    public function del($user = '' ){
+        $this->query = "DELETE FROM usuario WHERE user=$user";
         $this->set_query();
     }
 
     public function validate_usuario($user, $pass){
-        $this->query = "SELECT * FROM usuario WHERE email='$user'AND password= MD5('$pass')";
+        $this->query = "SELECT u.user, u.email, u.password, tr.nombres, tu.nombre
+                        FROM usuario u
+                        JOIN trabajador tr ON u.idTrabajador=tr.id
+                        JOIN tipousuario tu ON u.idTipoUsuario=tu.id 
+                        WHERE u.user = '$user' AND u.password = MD5('$pass')";
         $this->get_query();
 
         $data = array();
