@@ -11,12 +11,12 @@ class UsuarioController {
         return $this->model->set($usuario_data);
     }
 
-    public function get( $id = '' ){
-        return $this->model->get($id);
+    public function get( $user = '' ){
+        return $this->model->get($user);
     }
 
-    public function del($id = '' ){
-        return $this->model->del($id);
+    public function del($user = '' ){
+        return $this->model->del($user);
     }
 
     // public function __destruct() {
