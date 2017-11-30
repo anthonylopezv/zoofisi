@@ -68,6 +68,7 @@ table tr:nth-child(odd):not(:first-child) {background-color: #EEEEEE;color: blac
     background-color:#3F51B5;
     color: white;
     cursor: pointer; 
+    font-weight: bold;
 }
 
 .button:hover {opacity: .75;}
