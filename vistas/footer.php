@@ -1,7 +1,8 @@
   <?php
   print('
     </main>
-  
+
+    <div style="padding-top: 10px;" ></div>
     <footer>
        <p class="item" >UNMSM - zooFISI &copy; 2017</p> 
     </footer>

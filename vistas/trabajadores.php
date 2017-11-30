@@ -72,23 +72,3 @@ if (empty($trabajadores)) {
 
     print($template_trabajadores);
 }
-
-// <div class="clear p_25">
-//   <h2 class="left">Crear cuenta</h2>
-//   <input class="floatl ph12  sm6  md4  lg2  m_25">
-//   <input class="floatl ph12  sm6  md4  lg2  m_25">
-//   <input class="floatl ph12  sm6  md4  lg2  m_25">
-// </div>
-// <div class="item clear p_25">
-//   <h2 class="left">Datos del Trabajador</h2>
-//   <input class="floatl ph12  sm6  md4  lg2 m_25">
-//   <input class="floatl ph12  sm6  md4  lg2 m_25">
-//   <input class="floatl ph12  sm6  md4  lg2 m_25">
-//   <select style="height:30px" class="floatl lg2 m_25">
-//     <option value="" disabled selected>Profession</option>
-//     <option value="volvo">Volvo</option>
-//     <option value="saab">Saab</option>
-//     <option value="opel">Opel</option>
-//     <option value="audi">Audi</option>
-//   </select>
-// </div>
