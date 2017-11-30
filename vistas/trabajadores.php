@@ -1,7 +1,7 @@
 <?php
 
 print('
-    <h2 class="p1">GESTIÓN DE TRABAJADORES</h2>
+    <h2 class="p1">GESTIÓN DE TRABAJADORES DE ZOOFISI</h2>
 ');
 
 $trabajadores_controller = new TrabajadoresController();
