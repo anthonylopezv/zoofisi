@@ -58,13 +58,13 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
     }
     printf('
     <div class="clear p_25">
-    <h2 class="left">Dirección</h2>
-    <input class="floatl m_25" type="text" name="calle" placeholder="calle">
-    <input class="floatl m_25" type="number" name="nro" placeholder="nro">
-    <select style="height:30px" class="floatl lg2 m_25" name="idDistrito" placeholder="Distrito" required>
-        <option value="" disabled selected>Distrito</option>
-        %s
-    </select>
+        <h2 class="left">Dirección</h2>
+            <input class="floatl m_25" type="text" name="calle" placeholder="calle">
+            <input class="floatl m_25" type="number" name="nro" placeholder="nro">
+        <select style="height:30px" class="floatl lg2 m_25" name="idDistrito" placeholder="Distrito" required>
+            <option value="" disabled selected>Distrito</option>
+            %s
+        </select>
     ',$distrito_select);
 
     $provincia_controller = new ProvinciaController();
@@ -78,9 +78,9 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
     }
     printf('
     <select style="height:30px" class="floatl lg2 m_25" name="idProvincia" placeholder="Provincia" required>
-    <option value="" disabled selected>Provincia</option>
-    %s
-</select>
+        <option value="" disabled selected>Provincia</option>
+        %s
+    </select>
     ',$provincia_select);
 
     $departamento_controller = new DepartamentoController();
@@ -93,19 +93,18 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
                                    </option>';
     }
     printf('
-    <select style="height:30px" class="floatl lg2 m_25" name="idDepartamento" placeholder="Departamento" required>
-    <option value="" disabled selected>Departamento</option>
-    %s
-</select>
-</div>
-
-<div class="left  p_25">
-    <input class="button  add  m_25  f1_5" type="submit" value="Agregar">
-    <input type="hidden" name="r" value="trabajadores-add">
-    <input type="hidden" name="crud" value="set">
-</div>
-</div>    
-</form>
+                <select style="height:30px" class="floatl lg2 m_25" name="idDepartamento" placeholder="Departamento" required>
+                    <option value="" disabled selected>Departamento</option>
+                    %s
+                </select>
+            </div>
+            <div class="left  p_25">
+                <input class="button  add  m_25  f1_5" type="submit" value="Agregar">
+                <input type="hidden" name="r" value="trabajadores-add">
+                <input type="hidden" name="crud" value="set">
+            </div>
+        </div>    
+    </form>
     ',$departamento_select);
 }
 elseif ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administrador' && $_POST['crud'] == 'set') {
@@ -129,10 +128,10 @@ elseif ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Admi
             'nro' => $_POST['nro'],
             'idDistrito' => $_POST['idDistrito'],
             'id' => 0,
-            'nombre'=> null,
+            // 'dis_nombre'=> null,
             'idProvincia' => $_POST['idProvincia'],
             'id' => 0,
-            'nombre'=> null,
+            // 'pro_nombre'=> null,
             'idDepartamento' => $_POST['idDepartamento']
         );
         $trabajadores = $trabajadores_controller->set($new_trabajadores);
@@ -145,7 +144,7 @@ elseif ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Admi
             </div>
             <script>
                 window.onload = function () {
-                    // reloadPage("trabajadores")
+                    reloadPage("trabajadores")
                 }
             </script>
         ';       
