@@ -36,16 +36,17 @@ class TrabajadoresModel extends model {
 
     public function get( $idTrabajador = '' ){
         $this->query = ($idTrabajador != '')
-                ?"SELECT td.idTrabajador, tra.dni, tra.nombres, CONCAT(tra.apellido_pat,' ',tra.apellido_mat) AS apellidos,
-                    u.user,u.email,  tra.telefono,tu.nombre AS rol,
-                    CONCAT(d.calle,' ',d.nro,' - ',dis.dis_nombre,' - ',pro.pro_nombre) AS direccion
-                    FROM ((((((trabajador_direccion td
+                ?"SELECT td.idTrabajador, tra.dni, tra.nombres, tra.apellido_pat, tra.apellido_mat,
+                    u.user,u.email, u.password, tra.telefono,tu.nombre,
+                    d.calle,d.nro,dis.dis_nombre,pro.pro_nombre,dep.dep_nombre
+                    FROM (((((((trabajador_direccion td
                     INNER JOIN trabajador tra ON td.idTrabajador=tra.id)
                     INNER JOIN usuario u ON tra.id=u.idTrabajador)
                     INNER JOIN tipousuario tu ON u.idTipoUsuario=tu.id)
                     INNER JOIN direccion d ON td.idDireccion=d.id)
                     INNER JOIN distrito dis ON d.idDistrito=dis.id)
-                    INNER JOIN provincia pro ON dis.idProvincia=pro.id) 
+                    INNER JOIN provincia pro ON dis.idProvincia=pro.id)
+                    INNER JOIN departamento dep ON pro.idDepartamento=dep.id) 
                     WHERE td.idTrabajador = $idTrabajador"
                 :"SELECT td.idTrabajador, tra.dni, tra.nombres, CONCAT(tra.apellido_pat,' ',tra.apellido_mat) AS apellidos,
                          u.user,u.email,  tra.telefono,tu.nombre AS rol,

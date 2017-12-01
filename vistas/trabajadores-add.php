@@ -38,7 +38,7 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
                 </div>
                 <div class="left p_25">
                     <select style="height:30px" class="lg2 m_25" name="idTipoUsuario" placeholder="rol" required>
-                        <option value="" disabled selected>Rol</option>
+                        <option value="">Rol</option>
                         %s
                     </select>
                 </div>
@@ -62,7 +62,7 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
             <input class="floatl m_25" type="text" name="calle" placeholder="calle">
             <input class="floatl m_25" type="number" name="nro" placeholder="nro">
         <select style="height:30px" class="floatl lg2 m_25" name="idDistrito" placeholder="Distrito" required>
-            <option value="" disabled selected>Distrito</option>
+            <option value="">Distrito</option>
             %s
         </select>
     ',$distrito_select);
@@ -78,7 +78,7 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
     }
     printf('
     <select style="height:30px" class="floatl lg2 m_25" name="idProvincia" placeholder="Provincia" required>
-        <option value="" disabled selected>Provincia</option>
+        <option value="">Provincia</option>
         %s
     </select>
     ',$provincia_select);
@@ -94,7 +94,7 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
     }
     printf('
                 <select style="height:30px" class="floatl lg2 m_25" name="idDepartamento" placeholder="Departamento" required>
-                    <option value="" disabled selected>Departamento</option>
+                    <option value="">Departamento</option>
                     %s
                 </select>
             </div>
