@@ -34,6 +34,12 @@ abstract class Model {
         $this->db_close();
     }
 
+    protected function multiple_query(){
+        $this->db_open();
+        $this->conn->multi_query($this->query);
+        $this->db_close();
+    }
+
     protected function get_query(){
         $this->db_open();
         $result = $this->conn->query($this->query);

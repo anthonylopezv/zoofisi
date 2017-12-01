@@ -5,7 +5,7 @@ print('
   <div class="divlogin">
     <form class="item" method="POST" >
       <div class="p_5">
-        <input type="text" name="user" placeholder="Email" required>
+        <input type="text" name="user" placeholder="Usuario" required>
       </div>
       <div class="p_5">
         <input type="password" name="pass" placeholder="Contraseña" required>

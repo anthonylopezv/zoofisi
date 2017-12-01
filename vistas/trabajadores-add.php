@@ -20,24 +20,30 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
             <div style="padding-left: 90px;" class="center">
                 <div class="item clear p_25">
                     <h2 class="left">Datos Personales</h2>
-                    <input class="floatl m_25" placeholder="Nombres completo">
-                    <input class="floatl m_25" placeholder="Apellido paterno">
-                    <input class="floatl m_25" placeholder="Apellido materno">
+                    <input class="floatl m_25" type="text" name="nombres" placeholder="Nombres completo">
+                    <input class="floatl m_25" type="text" name="apellido_pat" placeholder="Apellido paterno">
+                    <input class="floatl m_25" type="text" name="apellido_mat" placeholder="Apellido materno">
                 </div>
                 <div class="left p_25">
-                    <input class="m_25" type="text" name="nombre" placeholder="User" required>
+                    <input class="m_25" type="text" name="dni" placeholder="nro. DNI" required>
                 </div>
                 <div class="left p_25">
-                    <input class="m_25" type="text" name="nombre" placeholder="email" required>
+                    <input class="m_25" type="text" name="user" placeholder="Usuario" required>
                 </div>
                 <div class="left p_25">
-                    <input class="m_25" type="text" name="nombre" placeholder="password" required>
+                    <input class="m_25" type="text" name="email" placeholder="Email" required>
                 </div>
                 <div class="left p_25">
-                    <select style="height:30px" class="floatl lg2 m_25" required>
+                    <input class="m_25" type="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <div class="left p_25">
+                    <select style="height:30px" class="lg2 m_25" name="idTipoUsuario" placeholder="rol" required>
                         <option value="" disabled selected>Rol</option>
                         %s
                     </select>
+                </div>
+                <div class="left p_25">
+                    <input class="m_25" type="text" name="telefono" placeholder="Telefono" required>
                 </div>                
     ',$tipoTrabajador_select);
 
@@ -47,15 +53,15 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
 
     for ($n=0; $n < count($distrito) ; $n++) { 
         $distrito_select .= '<option value="' . $distrito[$n]['id'] . '">
-                                                  ' . $distrito[$n]['nombre'] . '
+                                                  ' . $distrito[$n]['dis_nombre'] . '
                                    </option>';
     }
     printf('
     <div class="clear p_25">
     <h2 class="left">Dirección</h2>
-    <input class="floatl m_25" placeholder="calle">
-    <input class="floatl m_25" placeholder="nro">
-    <select style="height:30px" class="floatl lg2 m_25" required>
+    <input class="floatl m_25" type="text" name="calle" placeholder="calle">
+    <input class="floatl m_25" type="number" name="nro" placeholder="nro">
+    <select style="height:30px" class="floatl lg2 m_25" name="idDistrito" placeholder="Distrito" required>
         <option value="" disabled selected>Distrito</option>
         %s
     </select>
@@ -67,11 +73,11 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
 
     for ($n=0; $n < count($provincia) ; $n++) { 
         $provincia_select .= '<option value="' . $provincia[$n]['id'] . '">
-                                                  ' . $provincia[$n]['nombre'] . '
+                                                  ' . $provincia[$n]['pro_nombre'] . '
                                    </option>';
     }
     printf('
-    <select style="height:30px" class="floatl lg2 m_25" required>
+    <select style="height:30px" class="floatl lg2 m_25" name="idProvincia" placeholder="Provincia" required>
     <option value="" disabled selected>Provincia</option>
     %s
 </select>
@@ -83,11 +89,11 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
 
     for ($n=0; $n < count($departamento) ; $n++) { 
         $departamento_select .= '<option value="' . $departamento[$n]['id'] . '">
-                                                  ' . $departamento[$n]['nombre'] . '
+                                                  ' . $departamento[$n]['dep_nombre'] . '
                                    </option>';
     }
     printf('
-    <select style="height:30px" class="floatl lg2 m_25" required>
+    <select style="height:30px" class="floatl lg2 m_25" name="idDepartamento" placeholder="Departamento" required>
     <option value="" disabled selected>Departamento</option>
     %s
 </select>
@@ -95,41 +101,61 @@ if ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administ
 
 <div class="left  p_25">
     <input class="button  add  m_25  f1_5" type="submit" value="Agregar">
-    <input type="hidden" name="r" value="tipoTrabajador-add">
+    <input type="hidden" name="r" value="trabajadores-add">
     <input type="hidden" name="crud" value="set">
 </div>
 </div>    
 </form>
     ',$departamento_select);
 }
-// elseif ($_POST['r'] == 'tipoTrabajador-add' && $_SESSION['idTipoUsuario'] == 'Administrador' && $_POST['crud'] == 'set') {
-//         //programar la insercion
-//         $tipoTrabajador_controller = new TipoUsuarioController();
+elseif ($_POST['r'] == 'trabajadores-add' && $_SESSION['idTipoUsuario'] == 'Administrador' && $_POST['crud'] == 'set') {
+        //programar la insercion
+        $trabajadores_controller = new TrabajadoresController();
 
-//         $new_tipoTrabajador = array(
-//             'id' => 0,
-//             'nombre' => $_POST['nombre']
-//         );
-//         $tipoTrabajador = $tipoTrabajador_controller->set($new_tipoTrabajador);
+        $new_trabajadores = array(
+            'id' => 0,
+            'nombres' => $_POST['nombres'],
+            'apellido_pat' => $_POST['apellido_pat'],
+            'apellido_mat' => $_POST['apellido_mat'],
+            'fecha_ingreso' => null,
+            'dni' => $_POST['dni'],
+            'user' => $_POST['user'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'idTipoUsuario' => $_POST['idTipoUsuario'],
+            'telefono' => $_POST['telefono'],
+            'id' => 0,
+            'calle' => $_POST['calle'],
+            'nro' => $_POST['nro'],
+            'idDistrito' => $_POST['idDistrito'],
+            'id' => 0,
+            'nombre'=> null,
+            'idProvincia' => $_POST['idProvincia'],
+            'id' => 0,
+            'nombre'=> null,
+            'idDepartamento' => $_POST['idDepartamento']
+        );
+        $trabajadores = $trabajadores_controller->set($new_trabajadores);
+        // echo $trabajadores;
 
-//         $template = '
-//             <div style="padding-top: 20px;" ></div>
-//             <div class="container">
-//                 <p class="item  add">Tipo de Trabajador <b>%s</b> salvado</p>
-//             </div>
-//             <script>
-//                 window.onload = function () {
-//                     reloadPage("tipotrabajador")
-//                 }
-//             </script>
-//         ';       
-//         printf($template, $_POST['nombre']);
-// } 
-// else {
-//     //para generar una vista de no autorizado
-//     $controller = new ViewController();
-//     $controller -> load_view('error401');   
-// }
+        $template = '
+            <div style="padding-top: 20px;" ></div>
+            <div class="container">
+                <p class="item  add">Trabajador <b>%s</b> salvado</p>
+            </div>
+            <script>
+                window.onload = function () {
+                    // reloadPage("trabajadores")
+                }
+            </script>
+        ';       
+        printf($template, $_POST['nombres']);
+} 
+else {
+    //para generar una vista de no autorizado
+    $controller = new ViewController();
+    $controller -> load_view('error401');   
+}
 
 
 
