@@ -34,6 +34,8 @@ class TrabajadoresModel extends model {
         $this->multiple_query();
     }
 
+    
+
     public function get( $idTrabajador = '' ){
         $this->query = ($idTrabajador != '')
                 ?"SELECT td.idTrabajador, tra.dni, tra.nombres, tra.apellido_pat, tra.apellido_mat,

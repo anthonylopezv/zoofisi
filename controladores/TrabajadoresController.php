@@ -11,6 +11,10 @@ class TrabajadoresController {
         return $this->model->set($trabajador_data);
     }
 
+    public function set_edit($trabajador_data = array() ){
+        return $this->model->set_edit($trabajador_data);
+    }
+
     public function get( $idTrabajador = '' ){
         return $this->model->get($idTrabajador);
     }

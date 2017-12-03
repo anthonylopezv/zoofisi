@@ -34,13 +34,13 @@ if ($_POST['r'] == 'trabajadores-edit' && $_SESSION['idTipoUsuario'] != 'Adminis
         $template_trabajadores = '
             <h2 class="p1">Editar Trabajador</h2>
             <form method="POST" class="item">
-                <div style="padding-left: 90px;" class="center">
-                <div class="left p_25">
-                    <input class="m_25" type="text" placeholder="id" value="%s" disabled required>
-                    <input type="hidden" name="idTrabajador" value="%s">
-                </div>  
+                <div style="padding-left: 90px;" class="center"> 
                 <div class="item clear p_25">
                     <h2 class="left">Datos Personales</h2>
+                    <div class="left p_25">
+                        <input class="m_25" type="text" placeholder="id" value="%s" disabled required>
+                        <input type="hidden" name="idTrabajador" value="%s">
+                    </div> 
                     <input class="floatl m_25" type="text" name="nombres" placeholder="Nombres completo" value="%s">
                     <input class="floatl m_25" type="text" name="apellido_pat" placeholder="Apellido paterno" value="%s">
                     <input class="floatl m_25" type="text" name="apellido_mat" placeholder="Apellido materno" value="%s">
@@ -160,7 +160,7 @@ elseif ($_POST['r'] == 'trabajadores-edit' && $_SESSION['idTipoUsuario'] != 'Adm
         //programar la insercion
         
         $save_trabajadores = array(
-            'id' => 0,
+            'id' => $_POST['idTrabajador'],
             'nombres' => $_POST['nombres'],
             'apellido_pat' => $_POST['apellido_pat'],
             'apellido_mat' => $_POST['apellido_mat'],
@@ -169,18 +169,18 @@ elseif ($_POST['r'] == 'trabajadores-edit' && $_SESSION['idTipoUsuario'] != 'Adm
             'user' => $_POST['user'],
             'email' => $_POST['email'],
             'password' => $_POST['password'],
-            'idTipoUsuario' => $_POST['idTipoUsuario'],
+            'idTipoUsuario' => $_POST['nombre'],
             'telefono' => $_POST['telefono'],
             'id' => 0,
             'calle' => $_POST['calle'],
             'nro' => $_POST['nro'],
-            'idDistrito' => $_POST['idDistrito'],
+            'idDistrito' => $_POST['dis_nombre'],
             'id' => 0,
             // 'dis_nombre'=> null,
-            'idProvincia' => $_POST['idProvincia'],
+            'idProvincia' => $_POST['pro_nombre'],
             'id' => 0,
             // 'pro_nombre'=> null,
-            'idDepartamento' => $_POST['idDepartamento']
+            'idDepartamento' => $_POST['dep_nombre']
         );
         $trabajadores = $trabajadores_controller->set($save_trabajadores);
 

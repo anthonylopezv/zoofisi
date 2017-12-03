@@ -59,8 +59,7 @@ class UsuarioModel extends model {
             array_push($data, $value);
 
         }
-        return $data;
-    }
+        return $data;    }
 
     // public function __destruct() {
     //      unset($this);
